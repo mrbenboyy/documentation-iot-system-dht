@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        body {
+        html {
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         img {
@@ -81,9 +82,8 @@
         }
 
         .logo {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 1rem;
+            width: 150px;
+            height: 150px;
         }
     </style>
 </head>
@@ -119,26 +119,38 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#configuration"
+                        <a href="#mosquitto"
                             class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-3s">
-                            <i class="fas fa-cogs mr-3"></i> Configuration
+                            <i class="fas fa-server mr-3"></i> Mosquitto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#influxdb"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-4s">
+                            <i class="fas fa-database mr-3"></i> InfluxDB
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#grafana"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-5s">
+                            <i class="fas fa-chart-line mr-3"></i> Grafana
                         </a>
                     </li>
                     <li>
                         <a href="#node-red"
-                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-4s">
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-6s">
                             <i class="fab fa-node-js mr-3"></i> Node-RED
                         </a>
                     </li>
                     <li>
                         <a href="#docker"
-                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-5s">
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-7s">
                             <i class="fab fa-docker mr-3"></i> Docker
                         </a>
                     </li>
                     <li>
                         <a href="#usage"
-                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-6s">
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-8s">
                             <i class="fas fa-play-circle mr-3"></i> Usage
                         </a>
                     </li>
@@ -216,8 +228,7 @@ Projet_IoT/
 │   │   └── data/
 │   └── docker-compose.yml
 ├── node-red_flows/
-│   └── flows.json
-└── documentation/
+    └── flows.json
                     </code></pre>
                 </div>
                 <p class="mt-4">Each directory has specific responsibilities, from sensor scripts to Docker
@@ -237,39 +248,51 @@ Projet_IoT/
                 <p class="mt-4">This will start the Mosquitto, InfluxDB, and Grafana services.</p>
             </section>
 
-            <!-- Configuration -->
-            <section id="configuration" class="mb-12 animate__animated animate__fadeIn">
-                <h2 class="text-3xl font-extrabold mb-6 section-title">Configuration</h2>
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Mosquitto</h3>
-                    <p class="mb-4">The MQTT broker configuration is available in <code>mosquitto.conf</code>. It is
-                        configured to allow anonymous connections.</p>
-                    <img src="mosquitto_config.png" alt="Mosquitto Config" class="rounded-lg shadow-lg card">
+            <!-- Mosquitto Section -->
+            <section id="mosquitto" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Mosquitto</h2>
+                <p class="mb-4">The MQTT broker configuration is available in <code>mosquitto.conf</code>. It is
+                    configured to allow anonymous connections.</p>
+                <pre class="bg-gray-100 p-4 rounded shadow"><code>
+listener 1883
+allow_anonymous true
+                </code></pre>
+            </section>
 
-                    <h3 class="text-2xl font-bold mb-4">InfluxDB</h3>
-                    <p class="mb-4">InfluxDB is configured with the following environment variables in the
-                        <code>docker-compose.yml</code> file:
-                    </p>
-                    <pre class="bg-gray-100 p-4 rounded shadow"><code>
+            <!-- InfluxDB Section -->
+            <section id="influxdb" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">InfluxDB</h2>
+                <p class="mb-4">InfluxDB is configured with the following environment variables in the
+                    <code>docker-compose.yml</code> file:
+                </p>
+                <pre class="bg-gray-100 p-4 rounded shadow"><code>
 DOCKER_INFLUXDB_INIT_MODE=setup
 DOCKER_INFLUXDB_INIT_USERNAME=abdelhakim_benbouanane
 DOCKER_INFLUXDB_INIT_PASSWORD=hakim123@
 DOCKER_INFLUXDB_INIT_ORG=IoT_Mundia
 DOCKER_INFLUXDB_INIT_BUCKET=mybucket
-                    </code></pre><br/>
-                    <img src="influxdb_data_explorer.png" alt="InfluxDB Data Explorer"
-                        class="rounded-lg shadow-lg card"><br/>
+</code></pre><br />
+                <p class="mb-4">the credentials are:
+                </p>
+                <pre class="bg-gray-100 p-4 rounded shadow"><code>
+Username: abdelhakim_benbouanane
+Password: hakim123@
+</code></pre><br />
+                <img src="influxdb_data_explorer.png" alt="InfluxDB Data Explorer"
+                    class="rounded-lg shadow-lg card"><br />
+            </section>
 
-                    <h3 class="text-2xl font-bold mb-4">Grafana</h3>
-                    <p class="mb-4">Grafana is configured to connect to InfluxDB. Use the following settings:</p>
-                    <pre class="bg-gray-100 p-4 rounded shadow"><code>
+            <!-- Grafana Section -->
+            <section id="grafana" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Grafana</h2>
+                <p class="mb-4">Grafana is configured to connect to InfluxDB. Use the following settings:</p>
+                <pre class="bg-gray-100 p-4 rounded shadow"><code>
 URL: http://influxdb:8086
 Organization: IoT_Mundia
 Token: admin:admin123
 Bucket: mybucket
-                    </code></pre><br/>
-                    <img src="grafana_connection.png" alt="Grafana Connection" class="rounded-lg shadow-lg card">
-                </div>
+                </code></pre><br />
+                <img src="grafana_connection.png" alt="Grafana Connection" class="rounded-lg shadow-lg card">
             </section>
 
             <!-- Node-RED -->
@@ -287,8 +310,8 @@ Bucket: mybucket
                     <li><strong>InfluxDB Output</strong>: Stores the parsed data in InfluxDB under the measurement
                         <code>sensor_data</code>.
                     </li>
-                </ol><br/>
-                <img src="node-red_flux.png" alt="Node-RED Flow" class="rounded-lg shadow-lg card"><br/>
+                </ol><br />
+                <img src="node-red_flux.png" alt="Node-RED Flow" class="rounded-lg shadow-lg card"><br />
                 <p class="mt-4">Here is the JSON representation of the Node-RED flow:</p>
                 <pre class="bg-gray-100 p-4 rounded shadow"><code>
 [
@@ -442,11 +465,11 @@ while True:
     client.publish(topic, payload)
     print(f"Published: {payload}")
     time.sleep(5)
-                </code></pre><br/>
-                <img src="python_script.png" alt="Python Script" class="rounded-lg shadow-lg card"><br/>
+                </code></pre><br />
+                <img src="python_script.png" alt="Python Script" class="rounded-lg shadow-lg card"><br />
                 <p class="mt-4">The data will be sent to the MQTT broker, processed by Node-RED, stored in InfluxDB, and
-                    visualized in Grafana.</p><br/>
-                <img src="dashboard.png" alt="Grafana Dashboard" class="rounded-lg shadow-lg card"><br/>
+                    visualized in Grafana.</p><br />
+                <img src="dashboard.png" alt="Grafana Dashboard" class="rounded-lg shadow-lg card"><br />
                 <img src="dashboard_gauge.png" alt="Grafana Dashboard" class="rounded-lg shadow-lg card">
             </section>
         </main>
