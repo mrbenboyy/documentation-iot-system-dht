@@ -7,74 +7,199 @@
     <title>IoT Project Documentation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        pre {
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .sidebar-link {
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            background-color: #374151;
+            transform: translateX(5px);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #3b82f6;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        .section-title:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 text-gray-900">
     <div class="flex">
         <!-- Sidebar -->
-        <div class="w-64 bg-gray-800 text-white h-screen fixed">
+        <aside class="w-64 bg-black text-white h-screen fixed">
             <div class="p-4">
-                <h1 class="text-2xl font-bold">IoT Project</h1>
-                <p class="text-sm text-gray-400">Documentation</p>
+                <img src="hakim_bot.png" alt="Project Logo" class="logo animate__animated animate__fadeIn">
+                <h1 class="text-2xl font-bold animate__animated animate__fadeIn">IoT Project</h1>
+                <p class="text-sm text-gray-400 animate__animated animate__fadeIn animate__delay-1s">Documentation Hub
+                </p>
             </div>
             <nav class="mt-6">
                 <ul>
                     <li>
-                        <a href="#introduction" class="flex items-center p-2 hover:bg-gray-700">
-                            <i class="fas fa-home mr-2"></i> Introduction
+                        <a href="#introduction"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft">
+                            <i class="fas fa-info-circle mr-3"></i> Introduction
                         </a>
                     </li>
                     <li>
-                        <a href="#project-structure" class="flex items-center p-2 hover:bg-gray-700">
-                            <i class="fas fa-folder-open mr-2"></i> Project Structure
+                        <a href="#project-structure"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-1s">
+                            <i class="fas fa-folder-tree mr-3"></i> Project Structure
                         </a>
                     </li>
                     <li>
-                        <a href="#setup" class="flex items-center p-2 hover:bg-gray-700">
-                            <i class="fas fa-cogs mr-2"></i> Setup
+                        <a href="#setup"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-2s">
+                            <i class="fas fa-tools mr-3"></i> Setup
                         </a>
                     </li>
                     <li>
-                        <a href="#configuration" class="flex items-center p-2 hover:bg-gray-700">
-                            <i class="fas fa-tools mr-2"></i> Configuration
+                        <a href="#configuration"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-3s">
+                            <i class="fas fa-cogs mr-3"></i> Configuration
                         </a>
                     </li>
                     <li>
-                        <a href="#node-red" class="flex items-center p-2 hover:bg-gray-700">
-                            <i class="fas fa-project-diagram mr-2"></i> Node-RED
+                        <a href="#node-red"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-4s">
+                            <i class="fab fa-node-js mr-3"></i> Node-RED
                         </a>
                     </li>
                     <li>
-                        <a href="#usage" class="flex items-center p-2 hover:bg-gray-700">
-                            <i class="fas fa-play-circle mr-2"></i> Usage
+                        <a href="#docker"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-5s">
+                            <i class="fab fa-docker mr-3"></i> Docker
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#usage"
+                            class="flex items-center p-3 hover:bg-gray-700 transition sidebar-link animate__animated animate__fadeInLeft animate__delay-6s">
+                            <i class="fas fa-play-circle mr-3"></i> Usage
                         </a>
                     </li>
                 </ul>
             </nav>
-        </div>
+        </aside>
 
         <!-- Main Content -->
-        <div class="ml-64 p-8 w-full">
+        <main class="ml-64 p-8 w-full">
             <!-- Introduction -->
-            <section id="introduction" class="mb-8">
-                <h2 class="text-3xl font-bold mb-4">Introduction</h2>
-                <p class="mb-4">This project demonstrates how to set up an IoT system to monitor temperature and
-                    humidity using simulated sensor data. The system consists of the following components:</p>
-                <ul class="list-disc list-inside mb-4">
-                    <li>Python script to simulate sensor data</li>
-                    <li>Mosquitto MQTT broker</li>
-                    <li>InfluxDB for data storage</li>
-                    <li>Grafana for data visualization</li>
-                    <li>Node-RED for data flow management</li>
-                </ul>
-                <p class="mb-4">The project is containerized using Docker for easy setup and deployment.</p>
+            <section id="introduction" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Introduction</h2>
+                <p class="mb-6">This IoT project illustrates how to monitor temperature and humidity using a simulated
+                    sensor setup. Key components include:</p>
+
+                <!-- Card Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-* gap-5">
+                    <!-- Python Card -->
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <img src="python_logo.png" alt="Python" class="h-12 w-12 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Python</h3>
+                        <p class="text-gray-600">Used for simulating sensor data and sending it to the MQTT broker.</p>
+                    </div>
+
+                    <!-- MQTT Card -->
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <img src="mosquitto_logo.png" alt="MQTT" class="h-12 w-12 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Mosquitto MQTT</h3>
+                        <p class="text-gray-600">Acts as the MQTT broker for handling real-time data transmission.</p>
+                    </div>
+
+                    <!-- InfluxDB Card -->
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <img src="influxdb_logo.png" alt="InfluxDB" class="h-12 w-12 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">InfluxDB</h3>
+                        <p class="text-gray-600">Stores time-series data collected from the sensors.</p>
+                    </div>
+
+                    <!-- Grafana Card -->
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <img src="grafana_logo.png" alt="Grafana" class="h-12 w-12 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Grafana</h3>
+                        <p class="text-gray-600">Visualizes the sensor data with interactive dashboards.</p>
+                    </div>
+
+                    <!-- Docker Card -->
+                    <div class="card p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <img src="docker_logo.png" alt="Docker" class="h-12 w-12 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Docker</h3>
+                        <p class="text-gray-600">Manages containers for Mosquitto, InfluxDB, and Grafana, ensuring
+                            seamless deployment and integration.</p>
+                    </div>
+                </div>
+
+                <p class="mt-8">This Dockerized project ensures seamless deployment and integration of all services.</p>
             </section>
 
             <!-- Project Structure -->
-            <section id="project-structure" class="mb-8">
-                <h2 class="text-3xl font-bold mb-4">Project Structure</h2>
-                <p class="mb-4">The project is organized into the following folders and files:</p>
-                <div class="bg-gray-200 p-4 rounded mb-4">
+            <section id="project-structure" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Project Structure</h2>
+                <div class="bg-gray-100 border-l-4 border-blue-500 p-4 rounded shadow card">
                     <pre><code>
 Projet_IoT/
 ├── python_sensor/
@@ -92,75 +217,68 @@ Projet_IoT/
 │   └── docker-compose.yml
 ├── node-red_flows/
 │   └── flows.json
-└── documentation
+└── documentation/
                     </code></pre>
                 </div>
-                <p class="mb-4">Each folder and file serves a specific purpose in the project:</p>
-                <ul class="list-disc list-inside mb-4">
-                    <li><code>python_sensor/</code>: Contains the Python script to simulate sensor data.</li>
-                    <li><code>docker_config/</code>: Contains Docker configurations and data for Mosquitto, InfluxDB,
-                        and Grafana.</li>
-                    <li><code>node-red_flows/</code>: Contains Node-RED flow configurations.</li>
-                    <li><code>documentation/</code>: Contains the project documentation.</li>
-                </ul>
+                <p class="mt-4">Each directory has specific responsibilities, from sensor scripts to Docker
+                    configurations.</p>
             </section>
 
             <!-- Setup -->
-            <section id="setup" class="mb-8">
-                <h2 class="text-3xl font-bold mb-4">Setup</h2>
-                <p class="mb-4">To set up the project, follow these steps:</p>
-                <ol class="list-decimal list-inside mb-4">
-                    <li>Clone the project repository.</li>
-                    <li>Install Docker and Docker Compose if not already installed.</li>
-                    <li>Navigate to the project directory and run <code
-                            class="bg-gray-200 p-1 rounded">docker-compose up -d</code>.</li>
+            <section id="setup" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Setup</h2>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Clone the repository.</li>
+                    <pre>git clone https://github.com/mrbenboyy/IoT-monitor-temperature-humidity.git</pre>
+                    <li>Ensure Docker and Docker Compose are installed.</li>
+                    <li>Run <code class="bg-gray-100 px-2 py-1 rounded">docker-compose up -d</code>.</li>
                 </ol>
-                <img src="docker_containers.PNG" alt="Docker Containers" class="mb-4 rounded-lg shadow-lg">
-                <p class="mb-4">This will start the Mosquitto, InfluxDB, and Grafana services.</p>
+                <img src="docker_containers.PNG" alt="Docker Setup" class="mt-6 rounded-lg shadow-lg card">
+                <p class="mt-4">This will start the Mosquitto, InfluxDB, and Grafana services.</p>
             </section>
 
             <!-- Configuration -->
-            <section id="configuration" class="mb-8">
-                <h2 class="text-3xl font-bold mb-4">Configuration</h2>
-                <p class="mb-4">Configure each component as follows:</p>
+            <section id="configuration" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Configuration</h2>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Mosquitto</h3>
+                    <p class="mb-4">The MQTT broker configuration is available in <code>mosquitto.conf</code>. It is
+                        configured to allow anonymous connections.</p>
+                    <img src="mosquitto_config.png" alt="Mosquitto Config" class="rounded-lg shadow-lg card">
 
-                <h3 class="text-2xl font-semibold mb-2">Mosquitto</h3>
-                <p class="mb-4">The Mosquitto configuration file is located at <code
-                        class="bg-gray-200 p-1 rounded">mosquitto/config/mosquitto.conf</code>. It is configured to
-                    allow anonymous connections.</p>
-                <img src="mosquitto_config.png" alt="Mosquitto Configuration" class="mb-4 rounded-lg shadow-lg">
-
-                <h3 class="text-2xl font-semibold mb-2">InfluxDB</h3>
-                <p class="mb-4">InfluxDB is configured with the following environment variables in the <code
-                        class="bg-gray-200 p-1 rounded">docker-compose.yml</code> file:</p>
-                <pre class="bg-gray-200 p-4 rounded mb-4"><code>
+                    <h3 class="text-2xl font-bold mb-4">InfluxDB</h3>
+                    <p class="mb-4">InfluxDB is configured with the following environment variables in the
+                        <code>docker-compose.yml</code> file:
+                    </p>
+                    <pre class="bg-gray-100 p-4 rounded shadow"><code>
 DOCKER_INFLUXDB_INIT_MODE=setup
 DOCKER_INFLUXDB_INIT_USERNAME=abdelhakim_benbouanane
 DOCKER_INFLUXDB_INIT_PASSWORD=hakim123@
 DOCKER_INFLUXDB_INIT_ORG=IoT_Mundia
 DOCKER_INFLUXDB_INIT_BUCKET=mybucket
-                </code></pre>
-                <img src="influxdb_data_explorer.png" alt="InfluxDB Data Explorer" class="mb-4 rounded-lg shadow-lg">
+                    </code></pre><br/>
+                    <img src="influxdb_data_explorer.png" alt="InfluxDB Data Explorer"
+                        class="rounded-lg shadow-lg card"><br/>
 
-                <h3 class="text-2xl font-semibold mb-2">Grafana</h3>
-                <p class="mb-4">Grafana is configured to connect to InfluxDB. Use the following settings:</p>
-                <pre class="bg-gray-200 p-4 rounded mb-4"><code>
+                    <h3 class="text-2xl font-bold mb-4">Grafana</h3>
+                    <p class="mb-4">Grafana is configured to connect to InfluxDB. Use the following settings:</p>
+                    <pre class="bg-gray-100 p-4 rounded shadow"><code>
 URL: http://influxdb:8086
 Organization: IoT_Mundia
 Token: admin:admin123
 Bucket: mybucket
-                </code></pre>
-                <img src="grafana_connection.png" alt="Grafana Connection" class="mb-4 rounded-lg shadow-lg">
+                    </code></pre><br/>
+                    <img src="grafana_connection.png" alt="Grafana Connection" class="rounded-lg shadow-lg card">
+                </div>
             </section>
 
             <!-- Node-RED -->
-            <section id="node-red" class="mb-8">
-                <h2 class="text-3xl font-bold mb-4">Node-RED</h2>
-                <p class="mb-4">Node-RED is used to manage the data flow in this project. It receives data from the MQTT
-                    broker, processes it, and stores it in InfluxDB.</p>
-                <h3 class="text-2xl font-semibold mb-2">Flow Overview</h3>
+            <section id="node-red" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Node-RED</h2>
+                <p class="mb-4">Node-RED manages data flow and stores processed data in InfluxDB.</p>
+                <h3 class="text-2xl font-bold mb-4">Flow Overview</h3>
                 <p class="mb-4">The Node-RED flow consists of the following steps:</p>
-                <ol class="list-decimal list-inside mb-4">
+                <ol class="list-decimal pl-6 space-y-2">
                     <li><strong>MQTT Input</strong>: Receives data from the MQTT broker on the topic
                         <code>sensor/data</code>.
                     </li>
@@ -169,10 +287,10 @@ Bucket: mybucket
                     <li><strong>InfluxDB Output</strong>: Stores the parsed data in InfluxDB under the measurement
                         <code>sensor_data</code>.
                     </li>
-                </ol>
-                <img src="node-red_flux.png" alt="Node-RED Flow" class="mb-4 rounded-lg shadow-lg">
-                <p class="mb-4">Here is the JSON representation of the Node-RED flow:</p>
-                <pre class="bg-gray-200 p-4 rounded mb-4"><code>
+                </ol><br/>
+                <img src="node-red_flux.png" alt="Node-RED Flow" class="rounded-lg shadow-lg card"><br/>
+                <p class="mt-4">Here is the JSON representation of the Node-RED flow:</p>
+                <pre class="bg-gray-100 p-4 rounded shadow"><code>
 [
     {
         "id": "f1b1c1a0.1b1b1",
@@ -220,16 +338,92 @@ Bucket: mybucket
     }
 ]
                 </code></pre>
-                <p class="mb-4">This flow ensures that the sensor data is correctly processed and stored for
+                <p class="mt-4">This flow ensures that the sensor data is correctly processed and stored for
                     visualization in Grafana.</p>
             </section>
 
+            <!-- Docker Section -->
+            <section id="docker" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Docker</h2>
+                <p class="mb-4">
+                    Docker is a platform that allows you to package applications and their dependencies into
+                    lightweight, portable containers.
+                    In this project, Docker is used to containerize the following services:
+                </p>
+                <ul class="list-disc pl-6 mb-6">
+                    <li><strong>Mosquitto</strong>: The MQTT broker for real-time data transmission.</li>
+                    <li><strong>InfluxDB</strong>: The time-series database for storing sensor data.</li>
+                    <li><strong>Grafana</strong>: The visualization tool for creating interactive dashboards.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mb-4">Why Use Docker?</h3>
+                <p class="mb-4">
+                    Docker simplifies the deployment process by ensuring that all services run in isolated environments
+                    with their dependencies.
+                    This eliminates the "it works on my machine" problem and ensures consistency across different
+                    environments.
+                </p>
+
+                <h3 class="text-2xl font-bold mb-4">docker-compose.yml</h3>
+                <p class="mb-4">
+                    The <code>docker-compose.yml</code> file defines the services (containers) that Docker will manage.
+                    Below is an explanation of the services:
+                </p>
+                <pre class="bg-gray-100 p-4 rounded shadow"><code>
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest  # Mosquitto MQTT broker image
+    ports:
+      - "1883:1883"  # Exposes port 1883 for MQTT communication
+    volumes:
+      - ./mosquitto/config:/mosquitto/config  # Mounts config files
+      - ./mosquitto/data:/mosquitto/data      # Mounts data storage
+      - ./mosquitto/log:/mosquitto/log        # Mounts log files
+    networks:
+      - iot_network  # Connects to the IoT network
+
+  influxdb:
+    image: influxdb:latest  # InfluxDB time-series database image
+    ports:
+      - "8086:8086"  # Exposes port 8086 for InfluxDB access
+    volumes:
+      - ./influxdb/data:/var/lib/influxdb2  # Mounts data storage
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup  # Initializes InfluxDB
+      - DOCKER_INFLUXDB_INIT_USERNAME=abdelhakim_benbouanane  # Admin username
+      - DOCKER_INFLUXDB_INIT_PASSWORD=hakim123@  # Admin password
+      - DOCKER_INFLUXDB_INIT_ORG=IoT_Mundia  # Organization name
+      - DOCKER_INFLUXDB_INIT_BUCKET=mybucket  # Default bucket for data
+    networks:
+      - iot_network  # Connects to the IoT network
+
+  grafana:
+    image: grafana/grafana:latest  # Grafana visualization tool image
+    ports:
+      - "3000:3000"  # Exposes port 3000 for Grafana access
+    volumes:
+      - ./grafana/data:/var/lib/grafana  # Mounts data storage
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin  # Sets Grafana admin password
+    networks:
+      - iot_network  # Connects to the IoT network
+
+networks:
+  iot_network:
+    driver: bridge  # Creates a bridge network for communication between containers
+                </code></pre>
+                <p class="mt-4">
+                    This configuration ensures that all services are connected to the same network
+                    (<code>iot_network</code>) and can communicate with each other seamlessly.
+                </p>
+            </section>
+
             <!-- Usage -->
-            <section id="usage" class="mb-8">
-                <h2 class="text-3xl font-bold mb-4">Usage</h2>
+            <section id="usage" class="mb-12 animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-extrabold mb-6 section-title">Usage</h2>
                 <p class="mb-4">Once the services are running, you can start sending simulated sensor data using the
                     Python script:</p>
-                <pre class="bg-gray-200 p-4 rounded mb-4"><code>
+                <pre class="bg-gray-100 p-4 rounded shadow"><code>
 import random
 import time
 import paho.mqtt.client as mqtt
@@ -248,15 +442,14 @@ while True:
     client.publish(topic, payload)
     print(f"Published: {payload}")
     time.sleep(5)
-                </code></pre>
-                <img src="python_script.png" alt="Python Script" class="mb-4 rounded-lg shadow-lg">
-
-                <p class="mb-4">The data will be sent to the MQTT broker, processed by Node-RED, stored in InfluxDB, and
-                    visualized in Grafana.</p>
-                <img src="dashboard.png" alt="Grafana Dashboard" class="mb-4 rounded-lg shadow-lg">
-                <img src="dashboard_gauge.png" alt="Grafana Dashboard" class="mb-4 rounded-lg shadow-lg">
+                </code></pre><br/>
+                <img src="python_script.png" alt="Python Script" class="rounded-lg shadow-lg card"><br/>
+                <p class="mt-4">The data will be sent to the MQTT broker, processed by Node-RED, stored in InfluxDB, and
+                    visualized in Grafana.</p><br/>
+                <img src="dashboard.png" alt="Grafana Dashboard" class="rounded-lg shadow-lg card"><br/>
+                <img src="dashboard_gauge.png" alt="Grafana Dashboard" class="rounded-lg shadow-lg card">
             </section>
-        </div>
+        </main>
     </div>
 </body>
 
